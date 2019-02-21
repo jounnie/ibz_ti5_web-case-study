@@ -2,6 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp2.2</TargetFramework>
+		<AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+		<RootNamespace>spirit_webshop</RootNamespace>
         <UserSecretsId>ec1c07c7-6b16-44b5-8a6a-74af47c144af</UserSecretsId>
     </PropertyGroup>
 
