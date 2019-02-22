@@ -1,10 +1,8 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace spirit_webshop.Entities
 {
-    public partial class SpiritDbContext : DbContext
+    public class SpiritDbContext : DbContext
     {
         public SpiritDbContext()
         {
@@ -16,15 +14,7 @@ namespace spirit_webshop.Entities
         }
 
         public virtual DbSet<Product> Product { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=tcp:ti5-spirit-db.database.windows.net,1433;Initial Catalog=ti5-spirit-db;Persist Security Info=False;User ID=spirit-admin;Password=w6uJDSb4Z%8%M9$cy@;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-            }
-        }
+        public virtual DbSet<Category> Category { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -64,6 +54,40 @@ namespace spirit_webshop.Entities
                     .HasMaxLength(10)
                     .IsUnicode(false);
             });
+
+            modelBuilder.Entity<Category>(entity =>
+            {
+                entity.ToTable("category");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasColumnName("name")
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<ProductCategory>(entity =>
+            {
+                entity.ToTable("product_category");
+                entity.Property(e => e.FkProduct)
+                    .HasColumnName("fk_product");
+                entity.Property(e => e.FkCategory)
+                    .HasColumnName("fk_category");
+
+                entity.HasKey(pc => new {pc.FkProduct, pc.FkCategory});
+            });
+
+            modelBuilder.Entity<ProductCategory>()
+                .HasOne(pc => pc.Product)
+                .WithMany(p => p.ProductCategories)
+                .HasForeignKey(pc => pc.FkProduct);
+
+            modelBuilder.Entity<ProductCategory>()
+                .HasOne(pc => pc.Category)
+                .WithMany(c => c.ProductCategories)
+                .HasForeignKey(pt => pt.FkCategory);
         }
     }
 }

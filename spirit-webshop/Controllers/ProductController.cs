@@ -19,7 +19,9 @@ namespace spirit_webshop.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> Get()
         {
-            return await _context.Product.ToListAsync();
+            return await _context.Product
+                //.Include(product => product.ProductCategories)
+                .ToListAsync();
         }
         
         [HttpGet("{id}")]
