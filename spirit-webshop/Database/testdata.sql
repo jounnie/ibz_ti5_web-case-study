@@ -9,7 +9,7 @@ INSERT INTO product (id, name, description, visibility, price, price_currency, s
                      order_quantity)
 VALUES (2, 'GUINNESS Draught Bier Glasflsche 330 ml / 4.2 % Irland',
         'Das irische Kultbier schmeckt vollmundig nach geröstetem Malz mit einem Hauch von Lakritze und Kaffee.',
-        'ACTIVE', 4.50, 'CHF', 40, 0);
+        'HIDDEN', 4.50, 'CHF', 40, 0);
 INSERT INTO product (id, name, description, visibility, price, price_currency, stock,
                      order_quantity)
 VALUES (3, 'Baarer GOLDMANDLI Zuger Spezial Hell 330 ml / 5.2% Schweiz',
