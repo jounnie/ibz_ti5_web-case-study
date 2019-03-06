@@ -37,6 +37,7 @@ namespace spirit_webshop
             else
                 app.UseHsts();
 
+            app.UseStaticFiles();
             app.UseHttpsRedirection();
             app.UseMvc();
         }
