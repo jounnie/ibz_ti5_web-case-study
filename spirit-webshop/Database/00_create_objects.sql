@@ -13,7 +13,8 @@ create table product
 create table category
 (
   id   int primary key identity,
-  name varchar(255) not null
+  name varchar(255) not null,
+  parent_category int foreign key references category (id)
 )
 
 create table product_category

@@ -10,6 +10,7 @@ namespace spirit_webshop.Entities
     {
         public Category()
         {
+            InverseParentCategoryNavigation = new HashSet<Category>();
             ProductCategory = new HashSet<ProductCategory>();
         }
 
@@ -19,7 +20,14 @@ namespace spirit_webshop.Entities
         [Column("name")]
         [StringLength(255)]
         public string Name { get; set; }
+        [Column("parent_category")]
+        public int? ParentCategory { get; set; }
 
+        [ForeignKey("ParentCategory")]
+        [InverseProperty("InverseParentCategoryNavigation")]
+        public virtual Category ParentCategoryNavigation { get; set; }
+        [InverseProperty("ParentCategoryNavigation")]
+        public virtual ICollection<Category> InverseParentCategoryNavigation { get; set; }
         [InverseProperty("FkCategoryNavigation")]
         public virtual ICollection<ProductCategory> ProductCategory { get; set; }
     }

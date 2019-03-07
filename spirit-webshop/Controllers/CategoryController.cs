@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -29,7 +30,7 @@ namespace spirit_webshop.Controllers
         public async Task<ActionResult<Category>> Get(int id)
         {
             var result = await _context.Category
-                //.Include(c => c.ProductCategories)
+                .Include(c => c.InverseParentCategoryNavigation)
                 //.ThenInclude(pc => pc.Product)
                 .SingleOrDefaultAsync(c => c.Id == id);
 

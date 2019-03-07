@@ -18,8 +18,9 @@ VALUES (3, 'Baarer GOLDMANDLI Zuger Spezial Hell 330 ml / 5.2% Schweiz',
 SET IDENTITY_INSERT product OFF;
 
 SET IDENTITY_INSERT category ON;
-INSERT INTO [ti5-spirit-db].[dbo].[category] (id, [name]) VALUES (1, 'Bier Hell')
-INSERT INTO [ti5-spirit-db].[dbo].[category] (id, [name]) VALUES (2, 'Bier Dunkel')
+INSERT INTO [ti5-spirit-db].[dbo].[category] (id, [name]) VALUES (1, 'Bier')
+INSERT INTO [ti5-spirit-db].[dbo].[category] (id, [name], [parent_category]) VALUES (2, 'Bier Hell', 1)
+INSERT INTO [ti5-spirit-db].[dbo].[category] (id, [name], [parent_category]) VALUES (3, 'Bier Dunkel', 1)
 SET IDENTITY_INSERT category OFF;
 
 

@@ -9,3 +9,15 @@ Accept: */*
 Cache-Control: no-cache
 
 ###
+
+GET http://localhost:5000/api/categories
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:5000/api/categories/1
+Accept: */*
+Cache-Control: no-cache
+
+###
