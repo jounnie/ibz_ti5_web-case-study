@@ -1,0 +1,42 @@
+GET http://localhost:5000/api/categories
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:5000/api/categories/1
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+POST http://localhost:5000/api/categories
+Accept: application/json
+Cache-Control: no-cache
+Content-Type:application/json
+
+{
+  "name": "SomeCategory",
+  "parent_category": 1
+}
+
+###
+
+PUT http://localhost:5000/api/categories/1
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Beer Blonde"
+}
+
+###
+
+DELETE http://localhost:5000/api/categories/4
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json
+
+###

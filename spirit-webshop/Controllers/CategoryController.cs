@@ -38,5 +38,42 @@ namespace spirit_webshop.Controllers
 
             return result;
         }
+        
+        [HttpPost]
+        public async Task<ActionResult<Category>> Create([FromBody] Category item)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            _context.Category.Add(item);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(Get), new {id = item.Id}, item);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(long id, [FromBody] Category item)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            if (id != item.Id) return BadRequest("request id and item id not equal");
+
+            _context.Entry(item).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var category = await _context.Category.FindAsync(id);
+
+            if (category == null) return NotFound();
+
+            _context.Category.Remove(category);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
 }
