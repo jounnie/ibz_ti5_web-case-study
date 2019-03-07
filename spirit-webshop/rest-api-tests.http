@@ -10,6 +10,43 @@ Cache-Control: no-cache
 
 ###
 
+POST http://localhost:5000/api/products
+Accept: application/json
+Cache-Control: no-cache
+Content-Type:application/json
+
+{
+  "name": "TestBeer",
+  "description": "some DESC",
+  "visibility": "ACTIVE",
+  "price": 20000,
+  "priceCurrency": "CHF",
+  "stock": 2,
+  "orderQuantity": 0
+}
+
+###
+
+PUT http://localhost:5000/api/products/6
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json
+
+{
+  "id": 6,
+  "name": "TestBeer2",
+  "visibility": "ACTIVE"
+}
+
+###
+
+DELETE http://localhost:5000/api/products/11
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json
+
+###
+
 GET http://localhost:5000/api/categories
 Accept: */*
 Cache-Control: no-cache
