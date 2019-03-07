@@ -11,9 +11,9 @@ namespace spirit_webshop.Entities
         [Column("id")]
         public int Id { get; set; }
         [Column("fk_order")]
-        public int? FkOrder { get; set; }
+        public int FkOrder { get; set; }
         [Column("fk_product")]
-        public int? FkProduct { get; set; }
+        public int FkProduct { get; set; }
         [Column("quantity")]
         public int Quantity { get; set; }
         [Column("user_currency")]

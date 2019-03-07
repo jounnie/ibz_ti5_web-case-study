@@ -24,7 +24,7 @@ namespace spirit_webshop.Entities
         [StringLength(10)]
         public string PayStatus { get; set; }
         [Column("date", TypeName = "datetime")]
-        public DateTime? Date { get; set; }
+        public DateTime Date { get; set; }
         [Required]
         [Column("street")]
         [StringLength(255)]
@@ -42,7 +42,7 @@ namespace spirit_webshop.Entities
         [StringLength(50)]
         public string Place { get; set; }
         [Column("fk_user")]
-        public int? FkUser { get; set; }
+        public int FkUser { get; set; }
 
         [ForeignKey("FkUser")]
         [InverseProperty("Order")]

@@ -11,9 +11,9 @@ namespace spirit_webshop.Entities
         [Column("id")]
         public int Id { get; set; }
         [Column("fk_product")]
-        public int? FkProduct { get; set; }
+        public int FkProduct { get; set; }
         [Column("fk_category")]
-        public int? FkCategory { get; set; }
+        public int FkCategory { get; set; }
 
         [ForeignKey("FkCategory")]
         [InverseProperty("ProductCategory")]

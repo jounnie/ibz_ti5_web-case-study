@@ -42,7 +42,7 @@ namespace spirit_webshop.Entities
                 entity.HasOne(d => d.ParentCategoryNavigation)
                     .WithMany(p => p.InverseParentCategoryNavigation)
                     .HasForeignKey(d => d.ParentCategory)
-                    .HasConstraintName("FK__category__parent__282DF8C2");
+                    .HasConstraintName("FK__category__parent__078C1F06");
             });
 
             modelBuilder.Entity<Order>(entity =>
@@ -62,7 +62,8 @@ namespace spirit_webshop.Entities
                 entity.HasOne(d => d.FkUserNavigation)
                     .WithMany(p => p.Order)
                     .HasForeignKey(d => d.FkUser)
-                    .HasConstraintName("FK__order__fk_user__367C1819");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__order__fk_user__15DA3E5D");
             });
 
             modelBuilder.Entity<Position>(entity =>
@@ -72,12 +73,14 @@ namespace spirit_webshop.Entities
                 entity.HasOne(d => d.FkOrderNavigation)
                     .WithMany(p => p.Position)
                     .HasForeignKey(d => d.FkOrder)
-                    .HasConstraintName("FK__position__fk_ord__395884C4");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__position__fk_ord__18B6AB08");
 
                 entity.HasOne(d => d.FkProductNavigation)
                     .WithMany(p => p.Position)
                     .HasForeignKey(d => d.FkProduct)
-                    .HasConstraintName("FK__position__fk_pro__3A4CA8FD");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__position__fk_pro__19AACF41");
             });
 
             modelBuilder.Entity<Product>(entity =>
@@ -96,12 +99,14 @@ namespace spirit_webshop.Entities
                 entity.HasOne(d => d.FkCategoryNavigation)
                     .WithMany(p => p.ProductCategory)
                     .HasForeignKey(d => d.FkCategory)
-                    .HasConstraintName("FK__product_c__fk_ca__2BFE89A6");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__product_c__fk_ca__0B5CAFEA");
 
                 entity.HasOne(d => d.FkProductNavigation)
                     .WithMany(p => p.ProductCategory)
                     .HasForeignKey(d => d.FkProduct)
-                    .HasConstraintName("FK__product_c__fk_pr__2B0A656D");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__product_c__fk_pr__0A688BB1");
             });
 
             modelBuilder.Entity<ProductPicture>(entity =>
@@ -111,7 +116,8 @@ namespace spirit_webshop.Entities
                 entity.HasOne(d => d.FkProductNavigation)
                     .WithMany(p => p.ProductPicture)
                     .HasForeignKey(d => d.FkProduct)
-                    .HasConstraintName("FK__product_p__fk_pr__2EDAF651");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__product_p__fk_pr__0E391C95");
             });
 
             modelBuilder.Entity<User>(entity =>

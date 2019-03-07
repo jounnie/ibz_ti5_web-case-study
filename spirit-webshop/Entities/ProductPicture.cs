@@ -11,7 +11,7 @@ namespace spirit_webshop.Entities
         [Column("id")]
         public int Id { get; set; }
         [Column("fk_product")]
-        public int? FkProduct { get; set; }
+        public int FkProduct { get; set; }
         [Required]
         [Column("base64")]
         public string Base64 { get; set; }

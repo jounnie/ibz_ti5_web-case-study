@@ -4,4 +4,4 @@ Microsoft.EntityFrameworkCore.SqlServer ^
 --context-dir Entities --output-dir Entities ^
 --force ^
 --context SpiritDbContext ^
---data-annotations
+--data-annotations --verbose
