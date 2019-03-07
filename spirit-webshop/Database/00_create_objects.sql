@@ -18,12 +18,14 @@ create table category
 
 create table product_category
 (
+  id   int primary key identity,
   fk_product  int foreign key references product (id),
   fk_category int foreign key references category (id)
 )
 
 create table product_picture
 (
+  id   int primary key identity,
   fk_product int foreign key references product (id),
   base64     varchar(max) not null
 )

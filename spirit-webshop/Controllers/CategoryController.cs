@@ -20,8 +20,8 @@ namespace spirit_webshop.Controllers
         public async Task<ActionResult<IEnumerable<Category>>> Get()
         {
             return await _context.Category
-                .Include(c => c.ProductCategories)
-                .ThenInclude(pc => pc.Product)
+                //.Include(c => c.ProductCategories)
+                //.ThenInclude(pc => pc.Product)
                 .ToListAsync();
         }
 
@@ -29,8 +29,8 @@ namespace spirit_webshop.Controllers
         public async Task<ActionResult<Category>> Get(int id)
         {
             var result = await _context.Category
-                .Include(c => c.ProductCategories)
-                .ThenInclude(pc => pc.Product)
+                //.Include(c => c.ProductCategories)
+                //.ThenInclude(pc => pc.Product)
                 .SingleOrDefaultAsync(c => c.Id == id);
 
             if (result == null) return NotFound();
