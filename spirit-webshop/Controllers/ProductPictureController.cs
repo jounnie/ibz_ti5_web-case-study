@@ -39,9 +39,9 @@ namespace spirit_webshop.Controllers
         }
 
         [HttpDelete("{id}/pictures/{pid}")]
-        public async Task<IActionResult> Delete(int pid)
+        public async Task<IActionResult> Delete(int id, int pid)
         {
-            var product = await _context.ProductPicture.FindAsync(pid);
+            var product = await _context.ProductPicture.Where(pp => pp.FkProduct== id && pp.Id== pid).SingleAsync();
 
             if (product == null) return NotFound();
 
