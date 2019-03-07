@@ -460,3 +460,5 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/rider,macos,csharp,windows
+
+index.html

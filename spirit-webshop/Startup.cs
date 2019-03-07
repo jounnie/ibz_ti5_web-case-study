@@ -39,7 +39,24 @@ namespace spirit_webshop
 
             app.UseStaticFiles();
             app.UseHttpsRedirection();
-            app.UseMvc();
+            
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    "default",
+                    "{controller=Home}/{action=Index}/{id?}");
+            });
+ 
+            // here you can see we make sure it doesn't start with /api, if it does, it'll 404 within .NET if it can't be found
+            app.MapWhen(x => !x.Request.Path.Value.StartsWith("/api"), builder =>
+            {
+                builder.UseMvc(routes =>
+                {
+                    routes.MapSpaFallbackRoute(
+                        "spa-fallback",
+                        new { controller = "Home", action = "Index" });
+                });
+            });
         }
     }
 }
