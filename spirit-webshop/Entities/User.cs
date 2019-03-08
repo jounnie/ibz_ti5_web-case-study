@@ -16,9 +16,13 @@ namespace spirit_webshop.Entities
         [Column("id")]
         public int Id { get; set; }
         [Required]
-        [Column("name")]
+        [Column("username")]
         [StringLength(255)]
-        public string Name { get; set; }
+        public string Username { get; set; }
+        [Required]
+        [Column("forename")]
+        [StringLength(255)]
+        public string Forename { get; set; }
         [Required]
         [Column("lastname")]
         [StringLength(255)]

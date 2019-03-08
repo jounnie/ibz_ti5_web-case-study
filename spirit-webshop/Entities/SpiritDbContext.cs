@@ -42,7 +42,7 @@ namespace spirit_webshop.Entities
                 entity.HasOne(d => d.ParentCategoryNavigation)
                     .WithMany(p => p.InverseParentCategoryNavigation)
                     .HasForeignKey(d => d.ParentCategory)
-                    .HasConstraintName("FK__category__parent__078C1F06");
+                    .HasConstraintName("FK__category__parent__1F63A897");
             });
 
             modelBuilder.Entity<Order>(entity =>
@@ -63,7 +63,7 @@ namespace spirit_webshop.Entities
                     .WithMany(p => p.Order)
                     .HasForeignKey(d => d.FkUser)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__order__fk_user__15DA3E5D");
+                    .HasConstraintName("FK__order__fk_user__2DB1C7EE");
             });
 
             modelBuilder.Entity<Position>(entity =>
@@ -74,13 +74,13 @@ namespace spirit_webshop.Entities
                     .WithMany(p => p.Position)
                     .HasForeignKey(d => d.FkOrder)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__position__fk_ord__18B6AB08");
+                    .HasConstraintName("FK__position__fk_ord__308E3499");
 
                 entity.HasOne(d => d.FkProductNavigation)
                     .WithMany(p => p.Position)
                     .HasForeignKey(d => d.FkProduct)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__position__fk_pro__19AACF41");
+                    .HasConstraintName("FK__position__fk_pro__318258D2");
             });
 
             modelBuilder.Entity<Product>(entity =>
@@ -100,13 +100,13 @@ namespace spirit_webshop.Entities
                     .WithMany(p => p.ProductCategory)
                     .HasForeignKey(d => d.FkCategory)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__product_c__fk_ca__0B5CAFEA");
+                    .HasConstraintName("FK__product_c__fk_ca__2334397B");
 
                 entity.HasOne(d => d.FkProductNavigation)
                     .WithMany(p => p.ProductCategory)
                     .HasForeignKey(d => d.FkProduct)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__product_c__fk_pr__0A688BB1");
+                    .HasConstraintName("FK__product_c__fk_pr__22401542");
             });
 
             modelBuilder.Entity<ProductPicture>(entity =>
@@ -117,18 +117,18 @@ namespace spirit_webshop.Entities
                     .WithMany(p => p.ProductPicture)
                     .HasForeignKey(d => d.FkProduct)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__product_p__fk_pr__0E391C95");
+                    .HasConstraintName("FK__product_p__fk_pr__2610A626");
             });
 
             modelBuilder.Entity<User>(entity =>
             {
                 entity.Property(e => e.Country).IsUnicode(false);
 
+                entity.Property(e => e.Forename).IsUnicode(false);
+
                 entity.Property(e => e.Lastname).IsUnicode(false);
 
                 entity.Property(e => e.Mail).IsUnicode(false);
-
-                entity.Property(e => e.Name).IsUnicode(false);
 
                 entity.Property(e => e.Password).IsUnicode(false);
 
@@ -137,6 +137,8 @@ namespace spirit_webshop.Entities
                 entity.Property(e => e.Street).IsUnicode(false);
 
                 entity.Property(e => e.Type).IsUnicode(false);
+
+                entity.Property(e => e.Username).IsUnicode(false);
 
                 entity.Property(e => e.Zip).IsUnicode(false);
             });

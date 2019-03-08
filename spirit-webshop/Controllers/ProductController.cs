@@ -21,7 +21,7 @@ namespace spirit_webshop.Controllers
         public async Task<ActionResult<IEnumerable<Product>>> Get()
         {
             return await _context.Product
-                //.Include(product => product.ProductCategories)
+                .Include(product => product.ProductPicture)
                 .ToListAsync();
         }
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +28,15 @@ namespace spirit_webshop
             services.AddDbContext<SpiritDbContext>(opt =>
                 opt.UseSqlServer(configurationSection.Value)
             );
+            
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                // Set a short timeout for easy testing.
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,6 +49,8 @@ namespace spirit_webshop
 
             app.UseStaticFiles();
             app.UseHttpsRedirection();
+            
+            app.UseSession();
             
             app.UseMvc(routes =>
             {

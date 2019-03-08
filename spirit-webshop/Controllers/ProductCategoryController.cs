@@ -35,9 +35,7 @@ namespace spirit_webshop.Controllers
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            var pc = new ProductCategory();
-            pc.FkProduct = item.FkProduct;
-            pc.FkCategory = item.FkCategory;
+            var pc = new ProductCategory {FkProduct = item.FkProduct, FkCategory = item.FkCategory};
             _context.ProductCategory.Add(pc);
             await _context.SaveChangesAsync();
 

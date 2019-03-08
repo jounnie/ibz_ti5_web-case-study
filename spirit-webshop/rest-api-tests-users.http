@@ -1,0 +1,63 @@
+GET http://localhost:5000/api/users/1
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+POST http://localhost:5000/api/users
+Accept: application/json
+Cache-Control: no-cache
+Content-Type:application/json
+
+{
+  "name": "TestBeer",
+  "description": "some DESC",
+  "visibility": "ACTIVE",
+  "price": 20000,
+  "priceCurrency": "CHF",
+  "stock": 2,
+  "orderQuantity": 0
+}
+
+###
+
+PUT http://localhost:5000/api/users/6
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json
+
+{
+  "id": 6,
+  "name": "TestBeer2",
+  "visibility": "ACTIVE"
+}
+
+###
+
+DELETE http://localhost:5000/api/users/11
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json
+
+###
+
+POST http://localhost:5000/api/users/login
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json
+
+{
+  "username": "jon",
+  "password": "1234"
+}
+###
+
+POST http://localhost:5000/api/users/logout
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json
+
+{
+  "username": "jon",
+  "password": "1234"
+}
