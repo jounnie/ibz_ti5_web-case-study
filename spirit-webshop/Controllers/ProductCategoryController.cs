@@ -20,7 +20,10 @@ namespace spirit_webshop.Controllers
         [HttpGet("{id}/products")]
         public async Task<ActionResult<IEnumerable<ProductCategory>>> GetProducts(int id)
         {
-            var result = await _context.ProductCategory.Where(p => p.FkCategory == id).ToListAsync();
+            var result = await _context.ProductCategory
+                .Where(p => p.FkCategory == id)
+                .Include(pc => pc.FkProductNavigation)
+                .ToListAsync();
 
             if (result == null) return NotFound();
 
