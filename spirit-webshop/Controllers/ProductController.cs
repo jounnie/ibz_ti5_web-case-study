@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -27,7 +28,11 @@ namespace spirit_webshop.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> Get(int id)
         {
-            var result = await _context.Product.FindAsync(id);
+            var result = await _context.Product
+                .Include(p => p.ProductCategory)
+                .Include(p => p.ProductPicture)
+                .Where(p => p.Id == id)
+                .FirstOrDefaultAsync();
 
             if (result == null) return NotFound();
 
