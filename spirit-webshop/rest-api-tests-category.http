@@ -46,3 +46,16 @@ Accept: */*
 Cache-Control: no-cache
 
 ###
+
+
+POST http://localhost:5000/api/categories/1/products
+Accept: application/json
+Cache-Control: no-cache
+Content-Type:application/json
+
+{
+  "fkProduct": "3",
+  "fkCategory": 1
+}
+
+###
