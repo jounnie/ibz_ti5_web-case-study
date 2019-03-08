@@ -52,3 +52,14 @@ Accept: */*
 Cache-Control: no-cache
 
 ###
+
+POST http://localhost:5000/api/products/1/pictures
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json
+
+{
+  "base64": "asdf"
+}
+
+###

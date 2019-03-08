@@ -28,14 +28,14 @@ namespace spirit_webshop.Controllers
         }
 
         [HttpPost("{id}/pictures")]
-        public async Task<ActionResult<Product>> Create([FromBody] ProductPicture item)
+        public async Task<ActionResult<Product>> Create(int id, [FromBody] ProductPicture item)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            _context.ProductPicture.Add(item);
+            _context.ProductPicture.Add(new ProductPicture {FkProduct = id, Base64 = item.Base64});
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetPictures), new {id = item.Id}, item);
+            return Ok();
         }
 
         [HttpDelete("{id}/pictures/{pid}")]
