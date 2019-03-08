@@ -35,4 +35,11 @@ INSERT INTO [ti5-spirit-db].[dbo].[product_category] ([fk_product], [fk_category
 INSERT INTO [ti5-spirit-db].[dbo].[product_category] ([fk_product], [fk_category]) VALUES (2, 2)
 INSERT INTO [ti5-spirit-db].[dbo].[product_category] ([fk_product], [fk_category]) VALUES (1, 2)
 
+SET IDENTITY_INSERT [user] ON;
+INSERT INTO [ti5-spirit-db].[dbo].[user] (id, [name], [lastname], [street], [zip], [country], [place], [mail], [password], [type]) 
+VALUES (1, 'Hans', 'Nötig', 'SomeStreet', '8000', 'Switzerland', 'Zürich', 'some@mail.com', '1234', 'ADMIN')
+INSERT INTO [ti5-spirit-db].[dbo].[user] (id, [name], [lastname], [street], [zip], [country], [place], [mail], [password], [type])
+ VALUES (2, 'Jon', 'Doe', 'Disneystreet', '5000', 'USA', 'Miami', 'mymail@mail.com', '1234', 'USER')
+SET IDENTITY_INSERT [user] OFF;
+
 
