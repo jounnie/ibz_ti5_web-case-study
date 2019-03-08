@@ -462,3 +462,4 @@ $RECYCLE.BIN/
 # End of https://www.gitignore.io/api/rider,macos,csharp,windows
 
 index.html
+.idea
