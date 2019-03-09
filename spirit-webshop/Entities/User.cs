@@ -16,10 +16,6 @@ namespace spirit_webshop.Entities
         [Column("id")]
         public int Id { get; set; }
         [Required]
-        [Column("username")]
-        [StringLength(255)]
-        public string Username { get; set; }
-        [Required]
         [Column("forename")]
         [StringLength(255)]
         public string Forename { get; set; }
@@ -44,9 +40,9 @@ namespace spirit_webshop.Entities
         [StringLength(50)]
         public string Place { get; set; }
         [Required]
-        [Column("mail")]
+        [Column("email")]
         [StringLength(50)]
-        public string Mail { get; set; }
+        public string Email { get; set; }
         [Required]
         [Column("password")]
         [StringLength(1000)]

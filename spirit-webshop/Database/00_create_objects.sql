@@ -35,14 +35,13 @@ create table product_picture
 create table [user]
 (
   id       int primary key identity,
-  username varchar(255)  not null,
   forename varchar(255)  not null,
   lastname varchar(255)  not null,
   street   varchar(255)  not null,
   zip      varchar(10)   not null,
   country  varchar(50)   not null,
   place    varchar(50)   not null,
-  mail     varchar(50)   not null,
+  email    varchar(50)   not null,
   password varchar(1000) not null, -- encrypted, could be longer
   type     varchar(10)   not null check (type in ('USER', 'ADMIN')),
 )

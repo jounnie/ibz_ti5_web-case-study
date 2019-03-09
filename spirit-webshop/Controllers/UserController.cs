@@ -77,13 +77,13 @@ namespace spirit_webshop.Controllers
         public async Task<ActionResult<User>> Login([FromBody] LoginRequest loginRequest)
         {
             var user = await _context.User
-                .Where(u => u.Username == loginRequest.Username && u.Password == loginRequest.Password)
+                .Where(u => u.Email == loginRequest.Email && u.Password == loginRequest.Password)
                 .FirstOrDefaultAsync();
 
             if (user == null)
                 return StatusCode(403);
             
-            HttpContext.Session.SetString("username", user.Username); 
+            HttpContext.Session.SetString("email", user.Email); 
             HttpContext.Session.SetString("type", user.Type); 
             
             return Ok(new {isAdmin = "ADMIN".Equals(user.Type)});
@@ -92,7 +92,7 @@ namespace spirit_webshop.Controllers
         [HttpPost("logout")]
         public OkResult Logout()
         {
-            HttpContext.Session.Remove("username"); 
+            HttpContext.Session.Remove("email"); 
             HttpContext.Session.Remove("type"); 
             
             return Ok();
@@ -100,7 +100,7 @@ namespace spirit_webshop.Controllers
         
         public class LoginRequest
         {
-            public string Username { get; set; }
+            public string Email { get; set; }
             public string Password { get; set; }
 
         }
