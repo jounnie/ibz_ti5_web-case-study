@@ -1,0 +1,54 @@
+GET http://localhost:5000/api/orders
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:5000/api/orders/1
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+POST http://localhost:5000/api/orders
+Accept: application/json
+Cache-Control: no-cache
+Content-Type:application/json
+
+{
+  "status": "NEW",
+  "payStatus": "UNPAID",
+  "date": "2019-03-12T17:48:58.64",
+  "street": "TestStreet",
+  "zip": "9000",
+  "country": "Switzerland",
+  "place": "Zürich",
+  "fkUser": 1,
+  "userCurrency": "CHF",
+  "currencyRate": 1.000000000,
+  "total": 50.000000000,
+  "position": [
+    {
+      "fkOrder": 1,
+      "fkProduct": 1,
+      "quantity": 2
+    },
+    {
+      "fkOrder": 1,
+      "fkProduct": 2,
+      "quantity": 5
+    }
+  ]
+}
+
+
+###
+
+DELETE http://localhost:5000/api/orders/2
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json
+
+###
+
+

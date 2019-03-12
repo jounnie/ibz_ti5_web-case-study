@@ -16,11 +16,6 @@ namespace spirit_webshop.Entities
         public int FkProduct { get; set; }
         [Column("quantity")]
         public int Quantity { get; set; }
-        [Column("user_currency")]
-        [StringLength(3)]
-        public string UserCurrency { get; set; }
-        [Column("currency_rate", TypeName = "decimal(19, 9)")]
-        public decimal? CurrencyRate { get; set; }
 
         [ForeignKey("FkOrder")]
         [InverseProperty("Position")]

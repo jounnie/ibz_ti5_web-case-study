@@ -57,30 +57,30 @@ namespace spirit_webshop.Entities
 
                 entity.Property(e => e.Street).IsUnicode(false);
 
+                entity.Property(e => e.UserCurrency).IsUnicode(false);
+
                 entity.Property(e => e.Zip).IsUnicode(false);
 
                 entity.HasOne(d => d.FkUserNavigation)
                     .WithMany(p => p.Order)
                     .HasForeignKey(d => d.FkUser)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__order__fk_user__4589517F");
+                    .HasConstraintName("FK__order__fk_user__4E1E9780");
             });
 
             modelBuilder.Entity<Position>(entity =>
             {
-                entity.Property(e => e.UserCurrency).IsUnicode(false);
-
                 entity.HasOne(d => d.FkOrderNavigation)
                     .WithMany(p => p.Position)
                     .HasForeignKey(d => d.FkOrder)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__position__fk_ord__4865BE2A");
+                    .HasConstraintName("FK__position__fk_ord__50FB042B");
 
                 entity.HasOne(d => d.FkProductNavigation)
                     .WithMany(p => p.Position)
                     .HasForeignKey(d => d.FkProduct)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__position__fk_pro__4959E263");
+                    .HasConstraintName("FK__position__fk_pro__51EF2864");
             });
 
             modelBuilder.Entity<Product>(entity =>

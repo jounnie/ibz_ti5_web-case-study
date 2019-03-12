@@ -43,6 +43,13 @@ namespace spirit_webshop.Entities
         public string Place { get; set; }
         [Column("fk_user")]
         public int FkUser { get; set; }
+        [Column("user_currency")]
+        [StringLength(3)]
+        public string UserCurrency { get; set; }
+        [Column("currency_rate", TypeName = "decimal(19, 9)")]
+        public decimal? CurrencyRate { get; set; }
+        [Column("total", TypeName = "decimal(19, 9)")]
+        public decimal? Total { get; set; }
 
         [ForeignKey("FkUser")]
         [InverseProperty("Order")]

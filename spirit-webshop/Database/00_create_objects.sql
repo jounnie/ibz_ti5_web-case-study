@@ -48,26 +48,27 @@ create table [user]
 
 create table [order]
 (
-  id         int primary key identity,
-  status     varchar(10)  not null check (status in ('NEW', 'SENT')),
-  pay_status varchar(10)  not null check (pay_status in ('UNPAID', 'PAID')),
-  date       datetime     not null,
+  id            int primary key identity,
+  status        varchar(10)  not null check (status in ('NEW', 'SENT')),
+  pay_status    varchar(10)  not null check (pay_status in ('UNPAID', 'PAID')),
+  date          datetime     not null,
   -- same shipping structure as in the user table (address can change between the orders)
-  street     varchar(255) not null,
-  zip        varchar(10)  not null,
-  country    varchar(50)  not null,
-  place      varchar(50)  not null,
-  fk_user    int          not null foreign key references [user] (id),
+  street        varchar(255) not null,
+  zip           varchar(10)  not null,
+  country       varchar(50)  not null,
+  place         varchar(50)  not null,
+  fk_user       int          not null foreign key references [user] (id),
+  user_currency varchar(3),
+  currency_rate decimal(19, 9), -- big enough for all rates (e.g. indonesia rupiah)
+  total         decimal(19, 9)
 )
 
 create table position
 (
-  id            int primary key identity,
-  fk_order      int not null foreign key references [order] (id),
-  fk_product    int not null foreign key references product (id),
-  quantity      int not null,
-  user_currency varchar(3),
-  currency_rate decimal(19, 9) -- big enough for all rates (e.g. indonesia rupiah)
+  id         int primary key identity,
+  fk_order   int not null foreign key references [order] (id),
+  fk_product int not null foreign key references product (id),
+  quantity   int not null,
 )
 
 go
